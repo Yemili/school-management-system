@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Details</title>
+     <style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+</head>
+<body>
+    <h1>Student Details</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>STUDENT_ID</th>
+                <th>EXAM_ID</th>
+                <th>TAMIL_MARKS</th>
+              	<th>ENGLISH_MARKS</th>
+                <th>MATHS_MARKS</th>
+                <th>SCIENCE_MARKS</th>
+                <th>SOCIAL_MARKS</th>
+                <th>TOTAL</th>
+                <th>AVERAGE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="academicDetails : ${details}">
+                <td th:text="${academicDetails.id}"></td>
+                <td th:text="${academicDetails.student_id}"></td>
+                <td th:text="${academicDetails.exam_id}"></td>
+                <td th:text="${academicDetails.tamil_marks}"></td>
+                <td th:text="${academicDetails.english_marks}"></td>
+                <td th:text="${academicDetails.maths_marks}"></td>
+                <td th:text="${academicDetails.science_marks}"></td>
+                <td th:text="${academicDetails.social_marks}"></td>
+                <td th:text="${academicDetails.total}"></td>
+                <td th:text="${academicDetails.average}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

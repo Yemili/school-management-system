@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/css/registrationstyles.css"> -->
+    <style>
+    
+    	a {
+    display: block;
+    text-align: right;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+    
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1  th:text="'Profile of ' + ${student.name} + '!'" ></h1>
+    
+    <div th:if="${student != null}">
+    	<p>Name: <span th:text="${student.name}"></span></p>
+        <p>Email: <span th:text="${student.email}"></span></p>
+        <p>Gender: <span th:text="${student.gender}"></span></p>
+        <p>MobileNumber: <span th:text="${student.mobilenumber}"></span></p>
+        <p>DateofBirth:<span th:text="${student.date_of_birth}"></span></p>
+        <p>Age: <span th:text="${student.age}"></span></p>
+        
+    
+    	<a th:href="@{/view/edit(name=${student.name})}">Edit Profile</a>
+	</div>
+<div th:if="${student == null}">
+    <p>No student found.</p>
+</div>
+    <a href="/view/logout" method="post">Logout</a>
+    
+    <!-- 
+    <div>
+        
+        
+    </div>
+    <a href="/">Back</a>
+ --></div>
+</body>
+</html>

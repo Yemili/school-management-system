@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Profile</title>
+    <!-- <style>
+    
+    	a {
+    display: block;
+    text-align: right;
+    color: #007bff;
+    text-decoration: none;
+    margin-bottom: 20px;
+    
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+    
+    </style> -->
+</head>
+<body>
+<div class="container">
+    <h1>Edit Profile</h1>
+    <form th:action="@{/view/editProfile}" method="post" th:object="${student}">
+       <input type="hidden" name="_method" value="PUT">
+      <!--  <input type="hidden" name="name" th:value="${student.name}">  -->
+        <div>
+            <label for="name">Name:</label><br><br>
+            <input type="text" id="name"title="Characters only" th:field="*{name}" required />
+        </div>
+        <div>
+            <label for="email">Email:</label><br><br>
+            <input type="email" id="email" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" th:field="*{email}" required />
+        </div>
+        <div>
+            <label for="gender">Gender:</label><br><br>
+            <select id="gender" th:field="*{gender}">
+                <option value="Male" th:selected="${student.gender == 'Male'}">Male</option>
+                <option value="Female" th:selected="${student.gender == 'Female'}">Female</option>
+                <option value="Other" th:selected="${student.gender == 'Other'}">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="mobilenumber">Mobile Number:</label><br><br>
+            <input type="tel" id="mobilenumber"  th:field="*{mobilenumber}" required />
+        </div>
+        <div>
+            <label for="birthday">DateofBirth:</label><br><br>
+  			<input type="date" id="date_of_birth" name="date_of_birth" th:field="*{date_of_birth}" required><br><br>
+        </div>
+        <div>
+            <button type="submit">Update</button><br><br>
+        </div>
+    </form>
+    <a href="/view/viewDetails">Cancel</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Academic Details</title>
+    
+</head>
+
+<body>
+<form th:action="@{/view/academicResults}" method="get">
+<div class="button-container">
+		
+		<input type="hidden" name="name" th:value="${name}" />
+        <label for="examType">Select Exam Type:</label>
+        <select name="examTypeName" id="examTypeName" >
+            <option value="">--Select Exam--</option>
+            <option value="UnitTest1">Unit Test 1</option>
+            <option value="UnitTest2">Unit Test 2</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Half-Yearly">Half-Yearly</option>
+            <option value="Annuval">Annuval</option>
+            
+        </select>
+        <input type="submit" value="submit" />
+    </div>
+    </form>
+
+
+
+
+</body>
+</html>

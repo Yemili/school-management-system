@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+    <link rel="stylesheet" type="text/css" href="/css/registrationstyles.css">
+</head>
+<body>
+    <h1 id="myheader">Student Registration</h1>
+    <form id="registrationForm" th:action="@{/view/registration}" th:object="${student}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" autocomplete="name" required><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" th:field="*{gender}" autocomplete="gender" required>
+            <option value="">Select</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" th:field="*{email}" autocomplete="email" required><br>
+
+        <label for="mobilenumber">Mobile Number:</label>
+        <input type="tel" id="mobilenumber" th:field="*{mobilenumber}" autocomplete="mobilenumber" required><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" th:field="*{password}" autocomplete="password" required><br>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" th:field="*{age}" autocomplete="age" required><br>
+
+        <input type="submit" value="Register">
+        <button type="button" id="loginButton">Login</button>
+         <p id="errorMessage" class="error"></p>
+    </form>
+    <div id="displayArea"></div> <!-- Area to display submitted information -->
+    <!-- <script src="/js/success.js"></script> -->
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loginForm</title>
+    <link rel="stylesheet" href="/css/loginstyles.css">
+
+</head>
+<body>
+    <!-- <h1>WELCOME TO THE STUDENT PORTAL</h1> -->
+
+    <h1 id="myheader" >Login</h1>
+   <!--   <form id="LoginForm" th:action="@{/view/loginForm}" th:object="${student}" method="post">
+            <label for="username">UserName</label>
+            <input type="text" id="name" th:field="*{name}" name="name" required><br>
+           
+            <label for="password">Password</label>
+            <input type="password" id="password" th:field="*{password}" name="password" required><br>
+           
+            <input type="submit">
+             <p id="errorMessage" class="error"></p>
+     </form> -->
+     <form action="/view/loginForm" method="post">
+            <label for="username">UserName</label>
+            <input type="text" id="name" th:field="*{name}" name="name" required><br>
+           
+            <label for="password">Password</label>
+            <input type="password" id="password" th:field="*{password}" name="password" required><br>
+     
+     
+    <button type="submit">Submit </button>
+</form>
+  <!-- <div class="dropdown">
+  <button class="dropbtn">Visit student portal</button>
+  <div class="dropdown-content">
+    <a href="http://localhost:8081/view/registration"  target="_self">Go to Registration</a>
+    <a href="http://localhost:8081/view/login"  target="_self">Go to SignIn</a>
+    
+    
+   	<a href="../template/registrationform.html"  target="_blank">Go to SignIn</a>
+    
+     <a href="http://localhost:8081/view/studentlist" target="_blank">Show Student Details</a>
+    <a href="http://localhost:8081/view/studentaccdemiclist" target="_blank">Show Student Accdemic Details</a>
+    <a href="http://localhost:8081/view/studentexamlist" target="_blank">Show Student Exam Details</a> 
+    
+  </div>
+</div> -->
+   
+</body>
+</html>
