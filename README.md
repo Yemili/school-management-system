@@ -8,15 +8,15 @@
 - spring-boot-starter-jdbc: It provides necessary libraries and configurations to use jdbc in springboot application make it easy to connect database and execute sql queries.
 
 ## For Database dependencies
-	- mysql-connector-java: connecting springboot application to the MySQL database.
+- mysql-connector-java: connecting springboot application to the MySQL database.
 
 ## For Thymeleaf dependencies
-	- spring-boot-starter-thymeleaf: for integrating thymeleaf template into springboot application for rendering views in web browser.
+- spring-boot-starter-thymeleaf: for integrating thymeleaf template into springboot application for rendering views in web browser.
 
 
 ## Functionalities
- - Login
-- Session Management: WIP 
-	- View Profile
-	- View Academic Details
-	- Edit Profile	
+- Login
+  - Session Management: WIP 
+- View Profile
+- View Academic Details
+- Edit Profile	
