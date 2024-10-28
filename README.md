@@ -7,10 +7,10 @@
 - spring-boot-starter-test: Testing libraries help to write unit test, integration tests and end-to-end tests for spring boot applications.
 - spring-boot-starter-jdbc: It provides necessary libraries and configurations to use jdbc in springboot application make it easy to connect database and execute sql queries.
 
-### For Database dependencies
+## For Database dependencies
 	- mysql-connector-java: connecting springboot application to the MySQL database.
 
-### For Thymeleaf dependencies
+## For Thymeleaf dependencies
 	- spring-boot-starter-thymeleaf: for integrating thymeleaf template into springboot application for rendering views in web browser.
 
 
