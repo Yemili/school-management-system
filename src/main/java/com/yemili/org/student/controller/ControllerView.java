@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.yemili.org.student.model.ExamTypeMarks;
+import com.yemili.org.student.model.Examtype;
 import com.yemili.org.student.model.Student;
 import com.yemili.org.student.model.Studentaccedamicdetails;
 import com.yemili.org.student.repository.StudentRepository;
@@ -41,7 +42,7 @@ public class ControllerView {
 
 	@GetMapping("/registration")
 	public String showRegistrationForm(Model model) {
-		// System.out.println("****************************************************8");
+		
 		model.addAttribute("student", new Student());
 
 		return "registrationform"; // Returns the Thymeleaf template name
@@ -71,7 +72,7 @@ public class ControllerView {
 	        //session.setAttribute("student", student); 
 	        model.addAttribute("student", students.get().getName());
 	        return "redirect:/view/welcome?name=" + name; 
-	        //return "welcomepage";
+	        
 	    } else {
 	        model.addAttribute("error", "Invalid name or password");
 	        return "index"; 
@@ -90,22 +91,8 @@ public class ControllerView {
 	 
 		 	return "welcomepage";
 	  
-	  }// Returns the Thymeleaf template name
-	 	 	
-	
-	
-	
-	/*
-	 * @GetMapping("/welcome") public String welcome(Model model,HttpSession
-	 * session) {
-	 * 
-	 * Student student = (Student) session.getAttribute("student"); if (student !=
-	 * null) { model.addAttribute("name", student.getName()); return "welcome"; }
-	 * return "redirect:/"; }
-	 */
+	  }
 	 
-	 
-	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 	    session.invalidate(); // Invalidate the session
@@ -115,7 +102,6 @@ public class ControllerView {
 
 	@GetMapping("/register")
 	public String registerStudent(Student student, Model model) {
-//        studentservice.addStudent(student);
 		model.addAttribute("message", "Registration Successful!");
 		return "registrationsuccess";
 	}
@@ -124,7 +110,7 @@ public class ControllerView {
 	@GetMapping("/viewDetails")
 	public String viewDetails(@RequestParam String name, Model model) {
 
-		 // Fetch user details from the database 
+		
 		Optional<Student> students =studentRepository.findByname(name);
 		if (students.isPresent()) 
 		{
@@ -164,7 +150,7 @@ public class ControllerView {
 	    
 	    if (existingStudentOpt.isPresent()) {
 	        Student existingStudent = existingStudentOpt.get();
-	     // Update the existing student's fields with the new values
+	     // Update the existing student fields with the new values
 	        existingStudent.setEmail(student.getEmail());
 	        existingStudent.setGender(student.getGender());
 	        existingStudent.setDate_of_birth(student.getDate_of_birth());
@@ -186,14 +172,14 @@ public class ControllerView {
 	@GetMapping("/academicDetails")
 	public String viewAcademicDetails(@RequestParam String name, Model model) {
         model.addAttribute("name", name);
-        return "academicDetailsPage"; // Thymeleaf template name for the academic details page
+        return "academicDetailsPage"; 
     }
 	
 	
 	@GetMapping("/academicResults")
 	public String getMarks(@RequestParam String examTypeName, Model model,@RequestParam String name) {
 		Optional<Student> students = studentRepository.findByname(name);
-		//Student students = studentRepository.findByname(name);
+		
 		 if (students.isPresent()) {
 			System.out.println(students.get()); 
 			model.addAttribute("student", students.get());		
@@ -212,7 +198,7 @@ public class ControllerView {
 			
         model.addAttribute("marks", marks);
         model.addAttribute("examtype_name", examTypeName);
-        return "academicResults"; // Thymeleaf template name
+        return "academicResults";
     }
 	else{model.addAttribute("error", "Invalid name or password") ;
 	return "welcomepage";
@@ -249,12 +235,15 @@ public class ControllerView {
 		return "studentdetails";
 	}
 
-	/*
-	 * @GetMapping("/studentexamlist") public String getStudentsExamList(Model
-	 * model) { List<Examtype> exams = studentservice.getAllExamTypes(); //
-	 * List<Student> students = studentservice.getAllStudents();
-	 * model.addAttribute("exams", exams); return "studentexamdetails"; }
-	 */
+	
+	 @GetMapping("/studentexamlist")
+	 public String getStudentsExamList(Model model) {
+		 List<Examtype> exams = studentservice.getAllExamTypes(); 
+	  List<Student> students = studentservice.getAllStudents();
+	  model.addAttribute("exams", exams); 
+	  return "studentexamdetails"; 
+	  }
+	 
 	@GetMapping("/studentaccdemiclist")
 	public String getStudentsAccdemicList(Model model) {
 		List<Studentaccedamicdetails> details = studentservice.getAllAcademicDetails();

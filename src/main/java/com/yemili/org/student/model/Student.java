@@ -120,7 +120,7 @@ public class Student implements Serializable {
 	@Override
 	public String toString() {
 		return "Student [name=" + name + ", mobilenumber=" + mobilenumber + ", email=" + email + ", password="
-				+ password + ", age=" + age + ", gender=" + gender + "]";
+				+ password + ", age=" + age + ", gender=" + gender + ",date_of_birth="+date_of_birth+"]";
 	}
 
 	public int getAge() {
