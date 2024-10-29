@@ -11,41 +11,20 @@
     <!-- <h1>WELCOME TO THE STUDENT PORTAL</h1> -->
 
     <h1 id="myheader" >Login</h1>
-   <!--   <form id="LoginForm" th:action="@{/view/loginForm}" th:object="${student}" method="post">
-            <label for="username">UserName</label>
-            <input type="text" id="name" th:field="*{name}" name="name" required><br>
-           
-            <label for="password">Password</label>
-            <input type="password" id="password" th:field="*{password}" name="password" required><br>
-           
-            <input type="submit">
-             <p id="errorMessage" class="error"></p>
-     </form> -->
+   
      <form action="/view/loginForm" method="post">
             <label for="username">UserName</label>
-            <input type="text" id="name" th:field="*{name}" name="name" required><br>
+            <input type="text" id="name"  name="name" required autocomplete="new-name"><br>
            
             <label for="password">Password</label>
-            <input type="password" id="password" th:field="*{password}" name="password" required><br>
+            <input type="password" id="password"  name="password" required autocomplete="new-password"><br>
      
      
     <button type="submit">Submit </button>
 </form>
-  <!-- <div class="dropdown">
-  <button class="dropbtn">Visit student portal</button>
-  <div class="dropdown-content">
-    <a href="http://localhost:8081/view/registration"  target="_self">Go to Registration</a>
-    <a href="http://localhost:8081/view/login"  target="_self">Go to SignIn</a>
-    
-    
-   	<a href="../template/registrationform.html"  target="_blank">Go to SignIn</a>
-    
-     <a href="http://localhost:8081/view/studentlist" target="_blank">Show Student Details</a>
-    <a href="http://localhost:8081/view/studentaccdemiclist" target="_blank">Show Student Accdemic Details</a>
-    <a href="http://localhost:8081/view/studentexamlist" target="_blank">Show Student Exam Details</a> 
-    
-  </div>
-</div> -->
-   
+<div th:if="${error}" style="color: red;">
+        <p th:text="${error}"></p>
+    </div>
+  
 </body>
 </html>

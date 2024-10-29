@@ -55,8 +55,9 @@ public class ControllerView {
 
 	}
 
-	@GetMapping("/login") public String showLoginForm(Model model) { 
-		  model.addAttribute("student", new Student());
+	@GetMapping("/login")
+	public String showLoginForm() { 
+		 // model.addAttribute("student", new Student());
 		  
 		  return "index"; 
 		  }// Returns the Thymeleaf template name } }
@@ -162,7 +163,7 @@ public class ControllerView {
 	    }
 	    else {
 	        
-	    	return "redirect:/view/error";
+	    	return "redirect:/view/welcome?name=" + name;
 	       
 	    }
 	}
@@ -194,8 +195,6 @@ public class ControllerView {
 			}
 			//System.out.println(students.get().getId()+" "+examtype_name);
 			
-			
-			
         model.addAttribute("marks", marks);
         model.addAttribute("examtype_name", examTypeName);
         return "academicResults";
@@ -205,9 +204,6 @@ public class ControllerView {
 	}
 	}
 	
-	
-	
-
 	@GetMapping("/studentlist")
 	public String getStudentList(Model model) {
 		List<Student> students = studentservice.getAllStudents();

@@ -142,7 +142,7 @@ public class StudentService {
     }
 	 // Get all exam types
 	public List<Examtype> getAllExamTypes() {
-		// TODO Auto-generated method stub
+		
 		return examtypeRepository.findAll();
 	}
 	// Add new exam type
@@ -152,7 +152,7 @@ public class StudentService {
 	}
 	// Get exam type by ID
 	public Examtype getExamTypeById(Long id) {
-		// TODO Auto-generated method stub
+		
 		return  examtypeRepository.findById(id).orElse(null);
 	}
 	 // Update exam type
@@ -167,53 +167,14 @@ public class StudentService {
     }
 	 // Delete exam type by ID
 	public void deleteExamType(Long id) {
-		// TODO Auto-generated method stub
 		examtypeRepository.deleteById(id);
 	}
-	
-	
-	/*public List<Studentaccedamicdetails> fetchAcademicDetails(String name, String examType) {
-		
-		// Step 1: Retrieve the user by their name
-	    Optional<Student> student = studentRepository.findByname(name);
-	    if (student.isPresent()) {
-	       int student_id = student.get().getId(); // Now you can call getId()
-	        
-	        
-			// Step 2: Fetch academic details based on the user's ID and the selected exam type
-		    List<Studentaccedamicdetails> academicDetails = studentaccedamicRepository.findByUserIdAndExamType(student_id, examType);
-		    
-		    // Check if there are academic details for the selected exam type
-		    if (academicDetails.isEmpty()) {
-		        throw new IllegalArgumentException("No academic details found for exam type: " + examType);
-		    }
-		    
-		    return academicDetails; // Return the retrieved academic details
-	        
-	    }
-	    else {
-	        throw new IllegalArgumentException("User not found with name: " + name);
-	    }
-	    */
-	
-	
 	
 	public List<ExamTypeMarks> getMarksByExamType(int student_id, String examTypeName) {
         return examtypemarksRepository.findByStudentIdAndExamTypeName(student_id, examTypeName);
     }
 	
-	/*
-	 * public String loginForm(String name, String password, Model model) {
-	 * Optional<Student> students = studentRepository.findByname(name); if
-	 * (students.isPresent()) { System.out.println(students.get());
-	 * model.addAttribute("student", students.get()); return
-	 * "redirect:/view/welcome?name=" + name;
-	 * 
-	 * } else{model.addAttribute("error", "Invalid name or password"); return
-	 * "index";}
-	 * 
-	 * }
-	 */
+	
 	}
 	
 	

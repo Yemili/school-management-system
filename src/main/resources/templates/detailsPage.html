@@ -50,13 +50,8 @@ a:hover {
     <p>No student found.</p>
 </div>
     <a href="/view/logout" method="post">Logout</a>
-    
-    <!-- 
-    <div>
-        
-        
-    </div>
-    <a href="/">Back</a>
- --></div>
+    <a th:href="@{/view/welcome(name=${student.name})}" method="get">Cancel</a>
+  
+</div>
 </body>
 </html>
