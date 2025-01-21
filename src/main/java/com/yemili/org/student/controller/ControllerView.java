@@ -1,6 +1,6 @@
 package com.yemili.org.student.controller;
 
-import java.security.Principal;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -64,15 +64,18 @@ public class ControllerView {
 		 
 	
 	@PostMapping("/loginForm")
-	public String loginForm(String name, String password, Model model) {
+	public String loginForm(@RequestParam String name, @RequestParam String password, Model model,HttpSession session) {
 	    Optional<Student> students = studentRepository.findByname(name);
 
 	    if (students.isPresent() && students.get().getPassword().equals(password))
 	    {
 	        //Student student = students.get(); 
-	        //session.setAttribute("student", student); 
+	        session.setAttribute("student", students.get());
+	     // Debugging: Check session attribute is being set
+            System.out.println("Student object set in session: " + students.get().getName());
+
 	        model.addAttribute("student", students.get().getName());
-	        return "redirect:/view/welcome?name=" + name; 
+	        return "redirect:/view/welcome"; 
 	        
 	    } else {
 	        model.addAttribute("error", "Invalid name or password");
@@ -82,17 +85,42 @@ public class ControllerView {
 
 	
 	
-	 @GetMapping("/welcome") 
-	 public String showWlcome(@RequestParam String name,Model model) { 
-		 model.addAttribute("name", name);
-		 Optional<Student> students = studentRepository.findByname(name); 
-		 if(students.isPresent())
-		 {
-			 model.addAttribute("name", students.get().getName()); }
-	 
-		 	return "welcomepage";
-	  
-	  }
+	/* @GetMapping("/welcome") */ 
+		/*
+		 * public String showWlcome(@RequestParam String name,Model model,HttpSession
+		 * session) { model.addAttribute("name", name); Optional<Student> students =
+		 * studentRepository.findByname(name); if(students.isPresent()) {
+		 * model.addAttribute("name", students.get().getName()); }
+		 * 
+		 * return "welcomepage";
+		 * 
+		 * }
+		 */
+	 @GetMapping("/welcome")
+	 public String showWelcome(Model model, HttpSession session) {
+	     // Log session ID to check if it persists
+	     System.out.println("Session ID: " + session.getId());
+	     
+	     // Retrieve the student object from the session
+	     Student student = (Student) session.getAttribute("student");
+
+	     // Log retrieved student object
+	     if (student == null) {
+	         System.out.println("No student found in session.");
+	     } else {
+	         System.out.println("Student retrieved from session: " + student.getName());
+	     }
+
+	     if (student == null) {
+	         // If there is no student in the session, redirect to login
+	         return "redirect:/view/login"; 
+	     }
+
+	     // Set the student's name in the model to display on the welcome page
+	     model.addAttribute("name", student.getName());
+
+	     return "welcomepage"; // Return the welcome page (welcomepage.html)
+	 }
 	 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {

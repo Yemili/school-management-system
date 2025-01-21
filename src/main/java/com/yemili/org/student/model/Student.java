@@ -1,9 +1,5 @@
 package com.yemili.org.student.model;
 
-
-
-
-
 import java.io.Serializable;
 import java.time.LocalDate;
 
