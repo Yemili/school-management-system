@@ -33,7 +33,7 @@ a:hover {
 <body>
 <div class="container">
     <h1>Academic Results for <span th:text="${student.name}"></span> (Exam: <span th:text="${examtype_name}"></span>)</h1>
-	<a href="/logout">Logout</a>
+	
     <div th:if="${not #lists.isEmpty(marks)}">
 	<table>
         <thead>
@@ -66,6 +66,8 @@ a:hover {
     <div th:if="${#lists.isEmpty(marks)}">
         <p>No results found for the selected exam type.</p>
     </div>
+    <a href="/view/logout" method="post">Logout</a>
+     <a th:href="@{/view/welcome(name=${student.name})}" method="get">Cancel</a>
  </div>
 </body>
 </html>

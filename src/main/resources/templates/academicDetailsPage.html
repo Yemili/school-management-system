@@ -19,12 +19,14 @@
             <option value="UnitTest2">Unit Test 2</option>
             <option value="Quarterly">Quarterly</option>
             <option value="Half-Yearly">Half-Yearly</option>
-            <option value="Annuval">Annuval</option>
+            <option value="Annuval">Annual</option>
             
         </select>
         <input type="submit" value="submit" />
     </div>
     </form>
+    <a href="/view/logout" method="post">Logout</a>
+   <a th:href="@{/view/welcome(name=${student.name})}" method="get">Cancel</a>
 
 
 
